@@ -90,16 +90,6 @@ const setupQuiz = () => {
 setupQuiz();
 
 
-// $button[0].addEventListener("click",()=>{
-//     //処理
-//     //文字列の比較で一致するかの確認はJSでは＝＝＝を使用する。
-//     if( correct === $button[0].textContent){
-//          window.alert("正解！");
-//     }else{
-//         window.alert("不正解...");
-//     }
-// })
-
 //イベントは色々な情報を持っている。
 //クリックイベントなら、どこがクリックされたか、など。
 //クリックされた要素に対して何かしたい時は、「e.target」で書くことが可能
@@ -110,12 +100,14 @@ const clickHandler = (e) => {
     //文字列の比較で一致するかの確認はJSでは＝＝＝を使用する。
     if( quiz[quizIndex].correct === e.target.textContent){
          window.alert("正解！");
+         
          score ++;
     }else{
            window.alert("不正解...");
     }
 
     //正誤判定の後、次の問題に進む必要がある。
+    //グローバル引数
     quizIndex ++;
 
     if(quizIndex < quizLength){
@@ -129,11 +121,13 @@ const clickHandler = (e) => {
 
     }
 }
+
 //whilループを使用して、各ボタンに対するハンドラー処理を設定する。
 let handlerindex = 0;
 //let buttonlength = $button.length;
 while( handlerindex < $buttonLength){
     $button[handlerindex].addEventListener("click", (e) => {
+        //ボタンが押されたら、どう振る舞うかのイベントを設定。
         clickHandler(e);
     });
     //インクリメント
